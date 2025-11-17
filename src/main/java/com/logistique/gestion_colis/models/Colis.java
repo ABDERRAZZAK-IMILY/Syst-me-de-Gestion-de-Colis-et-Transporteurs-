@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collation = "colis")
-public class Colis {
+public abstract class Colis {
 
     @Id
     private String id;
