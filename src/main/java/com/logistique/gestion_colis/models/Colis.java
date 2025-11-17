@@ -1,6 +1,8 @@
 package com.logistique.gestion_colis.models;
 
 
+import com.logistique.gestion_colis.models.enums.StatutColis;
+import com.logistique.gestion_colis.models.enums.TypeColis;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,11 @@ public class Colis {
 
     @Id
     private String id;
+
+    private TypeColis type;
+    private double poids;
+    private String adresse_destination;
+    private StatutColis statut;
 
 
 }
