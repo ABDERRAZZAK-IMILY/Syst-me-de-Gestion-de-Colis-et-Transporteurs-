@@ -24,4 +24,12 @@ public class Colis {
     private StatutColis statut;
 
 
+    public Colis(TypeColis type, double poids, String adresse_destination) {
+        this.type = type;
+        this.poids = poids;
+        this.adresse_destination = adresse_destination;
+        this.statut = StatutColis.EN_ATTENTE;
+    }
+
+
 }
