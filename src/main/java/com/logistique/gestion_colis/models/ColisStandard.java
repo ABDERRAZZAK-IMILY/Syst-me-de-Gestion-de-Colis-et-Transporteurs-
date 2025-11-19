@@ -2,14 +2,12 @@ package com.logistique.gestion_colis.models;
 
 
 import com.logistique.gestion_colis.models.enums.TypeColis;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Document
 @EqualsAndHashCode(callSuper = true)
