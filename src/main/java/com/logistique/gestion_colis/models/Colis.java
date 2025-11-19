@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collation = "colis")
+@Document(collection = "colis")
 public abstract class Colis {
 
     @Id
