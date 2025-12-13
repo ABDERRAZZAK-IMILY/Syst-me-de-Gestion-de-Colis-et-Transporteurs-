@@ -1,6 +1,7 @@
 services:
   mongodbatlas:
-    image: 'mongodb/mongodb-atlas-local:latest'
+    image: mongo:latest
+    container_name: mongodb-container
     ports:
       - '27017:27017'
     volumes:
