@@ -20,14 +20,16 @@ public abstract class Colis {
 
     private TypeColis type;
     private double poids;
-    private String adresse_destination;
+    private String adresseDestination;
     private StatutColis statut;
 
+    private String transporteurId;
 
-    public Colis(TypeColis type, double poids, String adresse_destination) {
+
+    public Colis(TypeColis type, double poids, String adresseDestination) {
         this.type = type;
         this.poids = poids;
-        this.adresse_destination = adresse_destination;
+        this.adresseDestination = adresseDestination;
         this.statut = StatutColis.EN_ATTENTE;
     }
 
