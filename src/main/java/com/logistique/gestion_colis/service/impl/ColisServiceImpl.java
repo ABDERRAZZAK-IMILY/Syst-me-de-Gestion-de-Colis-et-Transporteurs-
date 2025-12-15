@@ -6,6 +6,7 @@ import com.logistique.gestion_colis.mapper.ColisMapper;
 import com.logistique.gestion_colis.models.Colis;
 import com.logistique.gestion_colis.models.Transporteur;
 import com.logistique.gestion_colis.models.enums.StatutColis;
+import com.logistique.gestion_colis.models.enums.StatutTransporteur;
 import com.logistique.gestion_colis.repository.ColisRepository;
 import com.logistique.gestion_colis.repository.UserRepository;
 import com.logistique.gestion_colis.service.ColisService;
@@ -52,15 +53,21 @@ public class ColisServiceImpl implements ColisService {
                 .orElseThrow(() -> new RuntimeException("Transporteur introuvable"));
 
         if (!colis.getType().name().equals(transporteur.getSpecialite().name())) {
-            throw new RuntimeException("Spécialité incompatible");
+            throw new RuntimeException("Specialite incompatible");
+        }
+
+        if (transporteur.getStatut() != StatutTransporteur.DISPONIBLE) {
+            throw new RuntimeException("Le transporteur ne  pas disponible");
         }
 
         colis.setTransporteurId(transporteurId);
         colis.setStatut(StatutColis.EN_TRANSIT);
 
+        transporteur.setStatut(StatutTransporteur.EN_LIVRAISON);
+        userRepository.save(transporteur);
+
         return colisMapper.toResponse(colisRepository.save(colis));
     }
-
     @Override
     public ColisResponse updateStatut(String colisId, StatutColis newStatut) {
         Colis colis = colisRepository.findById(colisId)
