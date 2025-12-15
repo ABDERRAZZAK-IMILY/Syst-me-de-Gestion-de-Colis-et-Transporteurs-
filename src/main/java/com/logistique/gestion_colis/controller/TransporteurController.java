@@ -42,14 +42,6 @@ public class TransporteurController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/admin/users/{id}/activate")
-    public ResponseEntity<?> activateUser(@PathVariable String id) {
-        User user = userRepository.findById(id).orElseThrow();
-        user.setActive(true);
-        userRepository.save(user);
-        return ResponseEntity.ok().build();
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<Transporteur> updateTransporteur(@PathVariable String id, @RequestBody TransporteurRequest request) {
         return ResponseEntity.ok(transporteurService.updateTransporteur(id, request));
