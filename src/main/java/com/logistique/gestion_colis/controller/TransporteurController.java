@@ -49,4 +49,9 @@ public class TransporteurController {
         userRepository.save(user);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Transporteur> updateTransporteur(@PathVariable String id, @RequestBody TransporteurRequest request) {
+        return ResponseEntity.ok(transporteurService.updateTransporteur(id, request));
+    }
 }
