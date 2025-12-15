@@ -46,4 +46,28 @@ public class TransporteurService {
     public void deleteTransporteur(String id) {
         userRepository.deleteById(id);
     }
+
+
+
+    public Transporteur updateTransporteur(String id, TransporteurRequest request) {
+        Transporteur existingTransporteur = (Transporteur) userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Transporteur introuvable"));
+
+        existingTransporteur.setLogin(request.getLogin());
+
+        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
+            existingTransporteur.setPassword(passwordEncoder.encode(request.getPassword()));
+        }
+
+        if (request.getSpecialite() != null) {
+            existingTransporteur.setSpecialite(request.getSpecialite());
+        }
+
+        if (request.getStatut() != null) {
+            existingTransporteur.setStatut(request.getStatut());
+        }
+
+        return userRepository.save(existingTransporteur);
+    }
+
 }
