@@ -6,19 +6,8 @@ services:
       - '27017:27017'
     volumes:
       - mongodb_data:/data/db
-
-  jenkins:
-    image: jenkins/jenkins:lts-jdk17
-    privileged: true
-    user: root
-    ports:
-      - "9090:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - default
+      - gestion-network
 
   app:
     build: .
@@ -28,14 +17,14 @@ services:
     depends_on:
       - mongodbatlas
     environment:
+      - SERVER_PORT=8080
       - SPRING_DATA_MONGODB_URI=mongodb://mongodbatlas:27017/gestion_colis_db
     networks:
-      - default
+      - gestion-network
 
 volumes:
   mongodb_data:
-  jenkins_home:
 
 networks:
-  default:
-    driver: bridge
+  gestion-network:
+    external: true
