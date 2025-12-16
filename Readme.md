@@ -52,6 +52,9 @@ models : Entités de données (Utilisation de @Document et héritage).
 
 security : Configuration JWT et filtres.
 
+### Uml class diagrame :
+
+<img width="308" height="322" alt="{C27626D8-7FB7-4FC4-B26F-846275771445}" src="https://github.com/user-attachments/assets/f7361c0f-15a8-4303-99d0-cc40c42d9d8f" />
 
 
 
